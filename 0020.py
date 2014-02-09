@@ -4,9 +4,5 @@
 #Find the sum of the digits in the number 100!
 
 import math
- 
-num=0
-numlist=list(str(math.factorial(100)))
-for i in numlist:
-	num+=int(i)
-print num
+
+print sum(map(int,list(str(math.factorial(100)))))
