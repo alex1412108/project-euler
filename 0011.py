@@ -26,9 +26,6 @@ import csv
 
 def main():
 	finalnum=0
-	finali=0
-	finalj=0
-	finaldirection=0
 	data=list(datareader())
 	for i in range(0,len(data)):
 		for j in range(0,len(data[i])):
@@ -36,34 +33,18 @@ def main():
 				testnum=int(data[i][j])*int(data[i][j+1])*int(data[i][j+2])*int(data[i][j+3])#testing horizontal
 				if testnum>finalnum:
 					finalnum=testnum
-					finali=i
-					finalj=j
-					finaldirection=1
 				testnum=int(data[i][j])*int(data[i+1][j])*int(data[i+2][j])*int(data[i+3][j])#testing vertical
 				if testnum>finalnum:
 					finalnum=testnum
-					finali=i
-					finalj=j
-					finaldirection=2
-				testnum=int(data[i][j])*int(data[i+1][j+1])*int(data[i+2][j+2])*int(data[i+3][j+3])#testing diagonal-right
+				testnum=int(data[i][j])*int(data[i+1][j+1])*int(data[i+2][j+2])*int(data[i+3][j+3])#testing diagonal-down-right
 				if testnum>finalnum:
 					finalnum=testnum
-					finali=i
-					finalj=j
-					finaldirection=3
-				testnum=int(data[i][j])*int(data[i-1][j-1])*int(data[i-2][j-2])*int(data[i-3][j-3])#testing diagonal-left
+				testnum=int(data[i][j])*int(data[i+1][j-1])*int(data[i+2][j-2])*int(data[i+3][j-3])#testing diagonal-down-left
 				if testnum>finalnum:
 					finalnum=testnum
-					finali=i
-					finalj=j
-					finaldirection=4
 			except:
 				pass
 	print finalnum
-	print finali
-	print finalj
-	print finaldirection
-	print data[finali][finalj]
 
 def datareader():
 	with open('0011.txt') as csvfile:
