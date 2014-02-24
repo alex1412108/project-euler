@@ -3,22 +3,32 @@
 #As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest number that can be written as the sum of two abundant numbers is 24. By mathematical analysis, it can be shown that all integers greater than 28123 can be written as the sum of two abundant numbers. However, this upper limit cannot be reduced any further by analysis even though it is known that the greatest number that cannot be expressed as the sum of two abundant numbers is less than this limit.
 #Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 #from: http://projecteuler.net/problem=23
-
+abnumlist=[]
+numlist=range(1,28123)
 def main():
-	numlist=[]
-	for num in range(1,29):
-		numlist1=divisors_sum(num)
-		sum1=sum(numlist1)
+	for num in range(11,28123):
+		sum1=divisors_sum(num)
 		if num<sum1:
-			print num
-			print sum1
-			print numlist1
-
+			abnumlist.append(num)
+	sumabnumlist=abnum_sum(abnumlist)
+	anslist=set(numlist)-set(sumabnumlist)
+	print anslist
+	print sum(anslist)
 
 def divisors_sum(num):
 	numlist=[]
 	for i in range(1,num):
 		if num%i==0:
 			numlist.append(i)
+	return sum(numlist)
+
+def abnum_sum(abnumlist):
+	numlist=[]
+	for i in range(0,len(abnumlist)):
+		for j in range(0,len(abnumlist)-i):
+			num=abnumlist[i]+abnumlist[j+i]
+			if num<28123:
+				numlist.append(num)
 	return numlist
+
 main()
