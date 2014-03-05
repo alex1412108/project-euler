@@ -11,3 +11,20 @@
 #Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be seen that 1/7 has a 6-digit recurring cycle.
 #Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
 #from: http://projecteuler.net/problem=26
+nummaxlist=[]
+nummax=0
+nummaxlist=[]
+for i in range(1,10):
+	numlist=[]
+	pastj=0
+	num=1.0/i
+	numstring=str(num)
+	for j in numstring:
+		if j==pastj and pastj>0:
+			break
+		numlist.append(j)
+		pastj=j
+	if nummaxlist<len(numlist):
+		nummax=i
+		nummaxlist=numlist
+print nummax
