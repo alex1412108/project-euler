@@ -12,32 +12,17 @@
 #What is the value of the first triangle number to have over five hundred divisors?
 #from:http://projecteuler.net/problem=12
 
-def main():
-	sumnum=0
-	num=0
-	primelist=[]
-	for i in range(1,500):#upper range needs to be 1 more than the intended as need to start at 1 instead of 0
-		num+=i
-		primelist[:]=[]
-		primes=gen_primes(num)
-		for prime in primes:
-			if num%prime==0:
-				primelist.append(prime)
-		print primelist
-		if len(primelist)>5:
-			print num
-			print primelist
-			exit(0)
-
-def gen_primes(rangeheight):
-	numlist = {}
-	num = 2
-	for num in range(2,rangeheight):
-		if num not in numlist:
-			yield num
-			numlist[num * num] = [num]
-		else:
-			for p in numlist[num]:
-				numlist.setdefault(p + num, []).append(p)
-			del numlist[num]
-main()
+num=0
+numlist=[]
+for i in range(1,50000):#upper range needs to be 1 more than the intended as need to start at 1 instead of 0
+	num+=i
+	numlist[:]=[]
+	for j in range(1,num+1):
+		if num%j==0:
+			numlist.append(j)
+	if len(numlist)>500:
+		print num
+		print len(numlist)
+		print i
+		print numlist
+		exit(0)

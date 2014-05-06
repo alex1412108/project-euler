@@ -27,10 +27,11 @@ def main():
 	finalnum=0
 	primes=gen_primes()
 	for i in range(4000000):
-		if i>600851475143:
+		num=primes.next()
+		if num>600851475143:
 			exit(0)
 			print finalnum
-		num=primes.next()
+
 		if 600851475143%num==0:
 			finalnum=num
 	print 'failed'
