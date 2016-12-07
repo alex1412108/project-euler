@@ -27,16 +27,23 @@ def main():
 	finalnum=0
 	primes=gen_primes()
 	for i in range(4000000):
-		num=primes.next()
-		if num>600851475143:
+		num=next(primes)
+		if num>300425737572:
+			print ('the answer is ')
+			print (finalnum)
 			exit(0)
-			print finalnum
 
 		if 600851475143%num==0:
 			finalnum=num
-	print 'failed'
-	print num
-	print finalnum
+			print ('current candidate')
+			print (finalnum)
+
+		if num%10000000==0:
+			print (num)
+
+	print ('failed')
+	print (num)
+	print (finalnum)
 
 def gen_primes():
 	numlist = {}  
@@ -50,4 +57,5 @@ def gen_primes():
 				numlist.setdefault(p + num, []).append(p)
 			del numlist[num]
 		num += 1
+
 main()
